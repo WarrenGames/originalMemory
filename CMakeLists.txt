@@ -1,19 +1,17 @@
-cmake_minimum_required(VERSION 3.7.2)
+cmake_minimum_required(VERSION 3.0.0)
 
-#This project requires SDL2 library, SDL2_image and SDL2_ttf modules
-#You might need to set the 'SDL2_DIR' path (line number 11)
-
-project( originalMemory LANGUAGES C )
+project( game LANGUAGES C )
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmakeModules)
 
 if(WIN32)
-	set(SDL2_DIR "C:/Prog/libraries/mingw/SDL2/SDL2-2.0.16/x86_64-w64-mingw32")
+	set(SDL2_DIR "")
 endif(WIN32)
     
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
+find_package(SDL2_mixer REQUIRED)
 
 set(HEADERS
 	sources/mainMenu/levelButtons.h
@@ -65,18 +63,24 @@ target_include_directories(${PROJECT_NAME}
 	PUBLIC sources
 )
 
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
+target_link_libraries(
+		${PROJECT_NAME} 
+		${SDL2_LIBRARIES} 
+		${SDL2_IMAGE_LIBRARIES} 
+		${SDL2_TTF_LIBRARIES}
+)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES C_STANDARD 11 LINKER_LANGUAGE C)
+set_target_properties(
+		${PROJECT_NAME} 
+		PROPERTIES C_STANDARD 17 LINKER_LANGUAGE C
+)
 
 #Installation
 #Only for unix OS
 if(UNIX)
 	include(GNUInstallDirs)
-	install( DIRECTORY fonts icons textures DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME} )
+	install( DIRECTORY fonts icons licenses textures DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME} )
 	install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
-	
-	#In order to create an icon on the desktop
 	set( DESKTOP_DEST_PATH "/usr/share/applications/" )
 	set( DESKTOP_FILE "original-memory.desktop" )
 	
@@ -92,7 +96,4 @@ if(UNIX)
 	file(APPEND ${DESKTOP_FILE} "Categories=Game;The games of the warren;")
 	
 	install( FILES ${DESKTOP_FILE} DESTINATION "${DESKTOP_DEST_PATH}" )
-else()
-	install( DIRECTORY fonts icons textures DESTINATION ${CMAKE_INSTALL_PREFIX} )
-	install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX} )
 endif(UNIX) 
