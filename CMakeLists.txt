@@ -76,11 +76,12 @@ set_target_properties(
 )
 
 #Installation
-#Only for unix OS
+install( DIRECTORY fonts icons licenses textures DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME} )
+install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )	
+
+#Installation for unix Only for unix OS
 if(UNIX)
 	include(GNUInstallDirs)
-	install( DIRECTORY fonts icons licenses textures DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME} )
-	install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
 	set( DESKTOP_DEST_PATH "/usr/share/applications/" )
 	set( DESKTOP_FILE "original-memory.desktop" )
 	
