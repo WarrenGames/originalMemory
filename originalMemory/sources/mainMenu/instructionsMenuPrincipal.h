@@ -1,7 +1,7 @@
 #ifndef H_INSTRUCTIONS_MAINMENU
 #define H_INSTRUCTIONS_MAINMENU
 
-#include "SDL.h"
+#include "SDL_render.h"
 #include <stdio.h>
 #include <stdbool.h>
 

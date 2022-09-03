@@ -31,7 +31,7 @@ void loadGraphicsMain(FILE *gameLogs, SDL_Renderer *renderer, struct CardsGraphi
 
 void loadCardsFacesTextures(FILE *gameLog, SDL_Renderer *renderer, SDL_Texture ***textureArray, unsigned pairNumber)
 {
-	char cardsTexturesPath[32];
+	char cardsTexturesPath[64];
 
 	*textureArray = malloc( pairNumber * sizeof(SDL_Texture*) );
 
@@ -59,7 +59,7 @@ void loadTextsTextures(FILE *gameLog, SDL_Renderer *renderer, struct ComboTextur
 		TTF_CloseFont(font);
 	}
 	else{
-		fprintf(gameLog, "Error: couldn't load 'fonts/arial.ttf' font du to error: %s", TTF_GetError() );
+		fprintf(gameLog, "Error: couldn't load 'fonts/arial.ttf' font due to error: %s", TTF_GetError() );
 	}
     
 }
@@ -76,12 +76,12 @@ void loadSingleTextTexture(FILE *gameLog, SDL_Renderer *renderer, struct ComboTe
 			textTexture->h = tempSurf->h;
 			if( textTexture->texture == NULL )
 			{
-				fprintf(gameLog, "Error: couldn't create text SDL_Texture with text %s , du to error: %s", text, SDL_GetError() );
+				fprintf(gameLog, "Error: couldn't create text SDL_Texture with text %s , due to error: %s", text, SDL_GetError() );
 			}
 			SDL_FreeSurface(tempSurf);
 		}
 		else{
-			fprintf(gameLog, "Error: couldn't create text SDL_Surface texture du to error: %s", TTF_GetError() );
+			fprintf(gameLog, "Error: couldn't create text SDL_Surface texture due to error: %s", TTF_GetError() );
 		}
 	}
 }

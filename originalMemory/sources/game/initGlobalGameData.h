@@ -1,7 +1,7 @@
 #ifndef INIT_GLOBAL_GAME_DATA_H
 #define INIT_GLOBAL_GAME_DATA_H
 
-#include "SDL.h"
+#include "SDL_render.h"
 #include <stdio.h>
 #include <stdbool.h>
 

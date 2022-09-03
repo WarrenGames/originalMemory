@@ -2,7 +2,7 @@
 #define DISPLAY_TEXT_H
 
 #include "common/comboTextureStruct.h"
-#include "SDL.h"
+#include "SDL_render.h"
 
 struct ComboTexture;
 struct GlobalGameData;

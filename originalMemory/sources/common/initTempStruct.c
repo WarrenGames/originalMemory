@@ -1,10 +1,16 @@
 #include "common/initTempStruct.h"
 #include "common/timeDelayStruct.h"
-#include "SDL.h"
+#include "SDL_timer.h"
+#include "SDL_version.h"
 
 bool hasTimeElapsed(struct Temporisation* delay, unsigned elapsedTime)
 {
-	delay->current = SDL_GetTicks();
+	#if SDL_MINOR_VERSION == 0 && SDL_PATCHLEVEL < 18
+		delay->current = SDL_GetTicks();
+	#else
+		delay->current = SDL_GetTicks64();
+	#endif
+	
 	return delay->current - delay->precedent >= elapsedTime;
 }
 
@@ -15,6 +21,11 @@ void joinTimePoints(struct Temporisation* delay)
 
 void initDelayStruct(struct Temporisation* delay)
 {
-	delay->current = SDL_GetTicks();
-	delay->precedent = SDL_GetTicks();
+	#if SDL_MINOR_VERSION == 0 && SDL_PATCHLEVEL < 18
+		delay->current = SDL_GetTicks();
+		delay->precedent = SDL_GetTicks();
+	#else
+		delay->current = SDL_GetTicks64();
+		delay->precedent = SDL_GetTicks64();
+	#endif
 }

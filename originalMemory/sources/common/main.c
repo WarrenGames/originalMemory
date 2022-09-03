@@ -1,5 +1,6 @@
 #include "common/initialize.h"
-#include "SDL.h"
+#include "SDL_main.h"
+#include <stdlib.h>
 
 int main( int argc, char *argv[] )
 {

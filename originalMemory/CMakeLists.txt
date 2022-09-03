@@ -54,7 +54,12 @@ set(SOURCES
 	sources/game/allocMeltCardsData.c
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${INC_DIRS})
+add_executable(${PROJECT_NAME} 
+	WIN32
+	${SOURCES} 
+	${HEADERS} 
+	${INC_DIRS}
+)
 
 target_include_directories(${PROJECT_NAME}
 	PUBLIC ${SDL2_INCLUDE_DIRS}		

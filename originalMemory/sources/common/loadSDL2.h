@@ -1,7 +1,7 @@
 #ifndef LOAD_SDL2_H
 #define LOAD_SDL2_H
 
-#include "SDL.h"
+#include "SDL_render.h"
 #include "SDL_ttf.h"
 #include "stdio.h"
 

@@ -119,24 +119,26 @@ void setScreenDefinition(FILE *gameLog, bool isSDL2initialized, bool isTTF2initi
 		SDL_Renderer *renderer = loadAndLogRenderer(gameLog, window);
 		setWindowIcon(gameLog, window, "textures/5.png");
 		runGameIfContextInitialized(gameLog, renderer, window);
-		destroyRendererIfAny(renderer);
-		destroyWindowIfAny(window);
+		destroyRendererIfAny(&renderer);
+		destroyWindowIfAny(&window);
 	}
 }
 
-void destroyRendererIfAny(SDL_Renderer *renderer)
+void destroyRendererIfAny(SDL_Renderer **renderer)
 {
-	if( renderer )
+	if( *renderer )
 	{
-		SDL_DestroyRenderer(renderer);
+		SDL_DestroyRenderer(*renderer);
+		*renderer = NULL;
 	}
 }
 
-void destroyWindowIfAny(SDL_Window *window)
+void destroyWindowIfAny(SDL_Window **window)
 {
-	if( window )
+	if( *window )
 	{
-		SDL_DestroyWindow(window);
+		SDL_DestroyWindow(*window);
+		*window = NULL;
 	}
 }
 

@@ -8,7 +8,7 @@ void inputInitialisation(struct Input *in)
 	in->spaceBar = false;
 	in->escape = false;
 
-	for(unsigned i = 0 ; i < 8 ; ++i)
+	for( unsigned i = 0 ; i < 8 ; ++i)
 	{
 		in->mouseButtons[i] = false;
 	}
@@ -18,28 +18,27 @@ void inputInitialisation(struct Input *in)
 
 void updateEvents(struct Input *in)
 {
-	SDL_Event event;
-	while(SDL_PollEvent(&event))
+	while(SDL_PollEvent(&(in->event) ) )
 	{
-		switch (event.type)
+		switch (in->event.type)
 		{
 			case SDL_KEYDOWN:
-				setKeyState(event.key.keysym.sym, SDLK_SPACE, &in->spaceBar, true);
-				setKeyState(event.key.keysym.sym, SDLK_ESCAPE, &in->escape, true);
+				setKeyState(in->event.key.keysym.sym, SDLK_SPACE, &in->spaceBar, true);
+				setKeyState(in->event.key.keysym.sym, SDLK_ESCAPE, &in->escape, true);
 				break;
 			case SDL_KEYUP:
-				setKeyState(event.key.keysym.sym, SDLK_SPACE, &in->spaceBar, false);
-				setKeyState(event.key.keysym.sym, SDLK_ESCAPE, &in->escape, false);
+				setKeyState(in->event.key.keysym.sym, SDLK_SPACE, &in->spaceBar, false);
+				setKeyState(in->event.key.keysym.sym, SDLK_ESCAPE, &in->escape, false);
 				break;
 			case SDL_MOUSEMOTION:
-				in->xmouse = event.motion.x;
-				in->ymouse = event.motion.y;
+				in->xmouse = in->event.motion.x;
+				in->ymouse = in->event.motion.y;
 				break;
 			case SDL_MOUSEBUTTONDOWN:
-				in->mouseButtons[event.button.button] = true;
+				in->mouseButtons[in->event.button.button] = true;
 				break;
 			case SDL_MOUSEBUTTONUP:
-				in->mouseButtons[event.button.button] = false;
+				in->mouseButtons[in->event.button.button] = false;
 				break;
 			case SDL_QUIT:
 				in->SDL_Quit = true;

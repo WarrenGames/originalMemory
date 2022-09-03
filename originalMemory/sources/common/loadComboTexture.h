@@ -1,7 +1,7 @@
 #ifndef LOAD_COMBO_TEXTURE_H
 #define LOAD_COMBO_TEXTURE_H
 
-#include "SDL.h"
+#include "SDL_render.h"
 #include "SDL_ttf.h"
 #include <stdio.h>
 

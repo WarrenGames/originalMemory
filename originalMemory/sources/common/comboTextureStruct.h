@@ -1,7 +1,7 @@
 #ifndef COMMON_STRUCTURES_H
 #define COMMON_STRUCTURES_H
 
-#include "SDL.h"
+#include "SDL_render.h"
 
 struct ComboTexture
 {

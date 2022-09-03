@@ -1,7 +1,7 @@
 #ifndef LEVELBUTTONS_H
 #define LEVELBUTTONS_H
 
-#include "SDL.h"
+#include "SDL_render.h"
 #include <stdio.h>
 
 struct MainMenuGraphics;

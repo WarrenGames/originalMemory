@@ -1,11 +1,13 @@
 #ifndef USER_H
 #define USER_H
 
-#include "SDL.h"
+#include "SDL_keycode.h"
+#include "SDL_events.h"
 #include <stdbool.h>
 
 struct Input
 {
+	SDL_Event event;
 	int xmouse; 
 	int ymouse;
 	bool spaceBar;

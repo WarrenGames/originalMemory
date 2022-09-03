@@ -1,7 +1,8 @@
 #ifndef INITIALIZE_H
 #define INITIALIZE_H
 
-#include "SDL.h"
+#include "SDL_video.h"
+#include "SDL_render.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -25,9 +26,9 @@ SDL_Renderer* loadAndLogRenderer(FILE *gameLog, SDL_Window *window);
 
 void setScreenDefinition(FILE *gameLog, bool isSDL2initialized, bool isTTF2initialized);
 
-void destroyRendererIfAny(SDL_Renderer *renderer);
+void destroyRendererIfAny(SDL_Renderer **renderer);
 
-void destroyWindowIfAny(SDL_Window *window);
+void destroyWindowIfAny(SDL_Window **window);
 
 void runGameIfContextInitialized(FILE *gameLog, SDL_Renderer *renderer, SDL_Window *window);
 

@@ -2,7 +2,7 @@
 #define DISPLAY_CARDS_H
 
 #include <stdbool.h>
-#include "SDL.h"
+#include "SDL_render.h"
 
 struct Temporisation;
 struct GlobalGameData;

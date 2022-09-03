@@ -3,7 +3,7 @@
 
 #include "common/comboTextureStruct.h"
 #include "common/defines.h"
-#include "SDL.h"
+#include "SDL_render.h"
 #include "SDL_ttf.h"
 #include <stdio.h>
 
